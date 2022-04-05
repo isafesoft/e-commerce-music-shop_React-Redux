@@ -1,0 +1,51 @@
+
+.headerContainer{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.headerContainer .headerBtnArea {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+    background-color: lightgrey;
+
+}
+
+.logo{
+    width: 200px;
+    background-color: lightslategray;
+    height: inherit;
+    text-align: center;
+    line-height: 40px;
+    font-weight: bold;
+}
+
+.loginAndCart{
+    width: 200px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.pageHeading{
+    width: 85vw;
+    height: 300px;
+    margin: auto;
+}
+.pageHeading .nav{
+    margin-top: 20px;
+}
+
+.pageHeading .heading{
+    text-align: center;
+    font-size: 2rem;
+}
+
+.sortAndFilter{
+    width: 85%;
+    margin: auto;
+}
