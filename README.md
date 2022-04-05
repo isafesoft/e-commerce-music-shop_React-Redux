@@ -1,3 +1,9 @@
+
+# Install MUI for react V18
+
+### npm install @mui/material @emotion/react @emotion/styled --legacy-peer-deps
+### npm install @mui/icons-material --legacy-peer-deps
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
