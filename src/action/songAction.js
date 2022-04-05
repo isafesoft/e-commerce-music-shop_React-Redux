@@ -1,5 +1,5 @@
 import {api} from "../helper/api";
-import {FETCH_DATA, SORT_DATA} from "../helper/constant";
+import {ADD_TO_CART, FETCH_DATA, SORT_DATA} from "../helper/constant";
 
 export const fetchData = () => async dispatch => {
     try{
@@ -14,4 +14,11 @@ export const fetchData = () => async dispatch => {
 
 export const sortSongs = (value) => dispatch => {
     dispatch({type: SORT_DATA, payload: value})
+}
+
+export const addToCart = (song) => dispatch => {
+
+    let temp = {...song, count: 1}
+    console.log('addtocart action temp',temp)
+    dispatch({type: ADD_TO_CART, payload: temp})
 }

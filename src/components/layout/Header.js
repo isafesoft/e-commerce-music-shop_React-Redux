@@ -3,16 +3,23 @@ import '../../style/header.css'
 import {Box, FormControl, InputLabel, MenuItem, Select} from "@mui/material";
 import {useState} from "react";
 import {sortSongs} from "../../action/songAction";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 const Header = ({path, title}) => {
     const dispatch = useDispatch()
     const [price, setPrice] = useState('');
+    const cart = useSelector(state => state.CartReducer.cart)
     const handleChange = (event) => {
         setPrice(event.target.value);
         sortSongs(event.target.value)(dispatch)
     };
-    console.log('price',price)
+    const totalAmount = (arr) => {
+        let temp = 0
+        for(let value of arr){
+            temp += value.count
+        }
+        return temp
+    }
 
     return(
         <>
@@ -21,7 +28,13 @@ const Header = ({path, title}) => {
                     <div className='logo'>LOGO</div>
                     <div className='loginAndCart'>
                         <div className='login'>Login</div>
-                        <div className='cart'>Cart</div>
+                        <div className='cart'>
+                            Cart
+                            {
+                            cart.length > 0 ? <div className='cartTag'>{
+                                totalAmount(cart)
+                            }</div> : undefined
+                        }</div>
                     </div>
                 </div>
                 <div className='pageHeading'>
@@ -35,7 +48,7 @@ const Header = ({path, title}) => {
                 <div className='sortAndFilter'>
                     <Box sx={{ width: 200 }}>
                         <FormControl fullWidth>
-                            <InputLabel id="demo-simple-select-label">Price</InputLabel>
+                            <InputLabel id="demo-simple-select-label">Sort</InputLabel>
                             <Select
                                 labelId="demo-simple-select-label"
                                 id="demo-simple-select"
@@ -44,8 +57,10 @@ const Header = ({path, title}) => {
                                 onChange={handleChange}
                             >
                                 <MenuItem value={'0'}>Default</MenuItem>
-                                <MenuItem value={'1'}>From High to Low</MenuItem>
-                                <MenuItem value={'2'}>From Low to High</MenuItem>
+                                <MenuItem value={'1'}>Price From High to Low</MenuItem>
+                                <MenuItem value={'2'}>Price From Low to High</MenuItem>
+                                <MenuItem value={'3'}>Name From A-Z</MenuItem>
+                                <MenuItem value={'4'}>Name From Z-A</MenuItem>
                             </Select>
                         </FormControl>
                     </Box>

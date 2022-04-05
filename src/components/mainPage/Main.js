@@ -1,6 +1,6 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
-import {fetchData} from "../../action/songAction";
+import {addToCart, fetchData} from "../../action/songAction";
 import {Button, Card, CardActionArea, CardContent, CardMedia, Grid, Typography} from "@mui/material";
 
 
@@ -39,9 +39,9 @@ const Main = () => {
                                                     {value.price}
                                                 </Typography>
                                                 <Typography component='div'>
-                                                {/*<Button  sx={{margin:'auto',display:'block'}}>*/}
-                                                {/*    ADD TO CART*/}
-                                                {/*</Button>*/}
+                                                <Button  sx={{margin:'auto',display:'block'}} onClick={()=>{addToCart(value)(dispatch)}}>
+                                                    ADD TO CART
+                                                </Button>
                                                 </Typography>
                                             </CardContent>
 

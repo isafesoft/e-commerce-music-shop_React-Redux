@@ -9,11 +9,9 @@ export const SongReducer = (state = initState, action) => {
     const {type, payload} = action
     switch (type){
         case FETCH_DATA:
-            console.log('FETCH_DATA')
             return {...state, allSongs: payload, sortSongs: payload}
 
         case SORT_DATA:
-            console.log('SORT_DATA')
             let temp = [...state.allSongs]
             let compare = function (prop) {
                 return function (obj1, obj2) {
@@ -32,14 +30,18 @@ export const SongReducer = (state = initState, action) => {
                     }
                 }
             }
-            if(payload === '0'){
-                    return {...state, sortSongs: state.allSongs}
-            }else if(payload === '1'){
-                    temp = temp.sort(compare("price")).reverse()
-                    }else if(payload === '2'){
-                    temp = temp.sort(compare("price"))
-                    }
-                return {...state, sortSongs: temp}
+            if (payload === '0') {
+                return {...state, sortSongs: state.allSongs}
+            } else if (payload === '1') {
+                temp = temp.sort(compare("price")).reverse()
+            } else if (payload === '2') {
+                temp = temp.sort(compare("price"))
+            } else if (payload === '3') {
+                temp = temp.sort(compare("title"))
+            } else if (payload === '4') {
+                temp = temp.sort(compare("title")).reverse()
+            }
+            return {...state, sortSongs: temp}
 
         default:
             return state
