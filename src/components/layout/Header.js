@@ -28,6 +28,7 @@ const Header = ({path, title}) => {
                     <div className='logo'>LOGO</div>
                     <div className='loginAndCart'>
                         <div className='login'>Login</div>
+                        <Link to='/cart' type='a'>
                         <div className='cart'>
                             Cart
                             {
@@ -35,6 +36,7 @@ const Header = ({path, title}) => {
                                 totalAmount(cart)
                             }</div> : undefined
                         }</div>
+                        </Link>
                     </div>
                 </div>
                 <div className='pageHeading'>
@@ -45,26 +47,29 @@ const Header = ({path, title}) => {
                         <h1>{title}</h1>
                     </div>
                 </div>
-                <div className='sortAndFilter'>
-                    <Box sx={{ width: 200 }}>
-                        <FormControl fullWidth>
-                            <InputLabel id="demo-simple-select-label">Sort</InputLabel>
-                            <Select
-                                labelId="demo-simple-select-label"
-                                id="demo-simple-select"
-                                value={price}
-                                label="Price"
-                                onChange={handleChange}
-                            >
-                                <MenuItem value={'0'}>Default</MenuItem>
-                                <MenuItem value={'1'}>Price From High to Low</MenuItem>
-                                <MenuItem value={'2'}>Price From Low to High</MenuItem>
-                                <MenuItem value={'3'}>Name From A-Z</MenuItem>
-                                <MenuItem value={'4'}>Name From Z-A</MenuItem>
-                            </Select>
-                        </FormControl>
-                    </Box>
-                </div>
+                { title === 'ALL SONGS' ?
+                    <div className='sortAndFilter'>
+                        <Box sx={{width: 200}}>
+                            <FormControl fullWidth>
+                                <InputLabel id="demo-simple-select-label">Sort</InputLabel>
+                                <Select
+                                    labelId="demo-simple-select-label"
+                                    id="demo-simple-select"
+                                    value={price}
+                                    label="Price"
+                                    onChange={handleChange}
+                                >
+                                    <MenuItem value={'0'}>Default</MenuItem>
+                                    <MenuItem value={'1'}>Price From High to Low</MenuItem>
+                                    <MenuItem value={'2'}>Price From Low to High</MenuItem>
+                                    <MenuItem value={'3'}>Name From A-Z</MenuItem>
+                                    <MenuItem value={'4'}>Name From Z-A</MenuItem>
+                                </Select>
+                            </FormControl>
+                        </Box>
+                    </div>
+                    : undefined
+                }
             </div>
         </>
     )

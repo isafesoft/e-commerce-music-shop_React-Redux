@@ -1,6 +1,7 @@
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Main from "./components/mainPage/Main";
 import MainPageView from "./view/MainPageView";
+import CartView from "./view/CartView";
 
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<MainPageView/>}/>
+          <Route path='/cart' element={<CartView/>}/>
       </Routes>
     </BrowserRouter>
   );
