@@ -1,5 +1,5 @@
 import {api} from "../helper/api";
-import {FETCH_DATA} from "../helper/constant";
+import {FETCH_DATA, SORT_DATA} from "../helper/constant";
 
 export const fetchData = () => async dispatch => {
     try{
@@ -10,4 +10,8 @@ export const fetchData = () => async dispatch => {
     }catch (e) {
         console.log('cant get any data',e)
     }
+}
+
+export const sortSongs = (value) => dispatch => {
+    dispatch({type: SORT_DATA, payload: value})
 }

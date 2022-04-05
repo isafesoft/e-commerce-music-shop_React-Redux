@@ -6,7 +6,7 @@ import {Button, Card, CardActionArea, CardContent, CardMedia, Grid, Typography} 
 
 const Main = () => {
     const dispatch = useDispatch()
-    const songs = useSelector(state => state.SongReducer.allSongs)
+    const songs = useSelector(state => state.SongReducer.sortSongs)
     useEffect(() => {
         fetchData()(dispatch)
     }, [])
@@ -18,9 +18,9 @@ const Main = () => {
                 {
                     songs.map((value, index) => {
                         return (
-                            <Grid item xs={4}>
+                            <Grid item xs={4} key={index}>
                                 <Grid container justifyContent='center'>
-                                    <Card sx={{maxWidth: 350}} key={index}>
+                                    <Card sx={{maxWidth: 350}} >
                                         <CardActionArea>
                                             <CardMedia
                                                 component='img'
@@ -35,13 +35,13 @@ const Main = () => {
                                                 <Typography variant='body2' component='div'>
                                                     {value.artist}
                                                 </Typography>
-                                                <Typography variant='body2' component='text.secondary'>
+                                                <Typography variant='body2' >
                                                     {value.price}
                                                 </Typography>
                                                 <Typography component='div'>
-                                                <Button  sx={{margin:'auto',display:'block'}}>
-                                                    ADD TO CART
-                                                </Button>
+                                                {/*<Button  sx={{margin:'auto',display:'block'}}>*/}
+                                                {/*    ADD TO CART*/}
+                                                {/*</Button>*/}
                                                 </Typography>
                                             </CardContent>
 

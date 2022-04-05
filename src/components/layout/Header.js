@@ -2,13 +2,17 @@ import {Link} from "react-router-dom";
 import '../../style/header.css'
 import {Box, FormControl, InputLabel, MenuItem, Select} from "@mui/material";
 import {useState} from "react";
+import {sortSongs} from "../../action/songAction";
+import {useDispatch} from "react-redux";
 
 const Header = ({path, title}) => {
-
+    const dispatch = useDispatch()
     const [price, setPrice] = useState('');
     const handleChange = (event) => {
         setPrice(event.target.value);
+        sortSongs(event.target.value)(dispatch)
     };
+    console.log('price',price)
 
     return(
         <>
@@ -39,9 +43,9 @@ const Header = ({path, title}) => {
                                 label="Price"
                                 onChange={handleChange}
                             >
-                                <MenuItem value={1}>Ten</MenuItem>
-                                <MenuItem value={2}>Twenty</MenuItem>
-                                <MenuItem value={3}>Thirty</MenuItem>
+                                <MenuItem value={'0'}>Default</MenuItem>
+                                <MenuItem value={'1'}>From High to Low</MenuItem>
+                                <MenuItem value={'2'}>From Low to High</MenuItem>
                             </Select>
                         </FormControl>
                     </Box>
