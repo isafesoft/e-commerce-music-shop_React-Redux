@@ -1,0 +1,53 @@
+
+
+.playerContainer{
+    height: 700px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    border: 1px gray solid;
+    border-radius: 8px;
+    color: white;
+    margin: auto;
+    background-color: black;
+    box-shadow: white inset 0  0 20px;
+}
+
+.musicCover{
+    width: 400px;
+    height: 400px;
+    background-repeat: no-repeat !important;
+    background-size:400px !important;
+    border-radius: 50%;
+    animation: coverRotate 4s linear infinite;
+    position: relative;
+}
+.musicCover::after{
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top:175px;
+    left: 175px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+
+.musicInfo{
+    display: flex;
+    height: 300px;
+    width: inherit;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+}
+
+.musicInfo audio{
+    margin: auto;
+}
+
+@keyframes coverRotate {
+    from {transform: rotate(0deg)}
+    to { transform: rotate(360deg)}
+}

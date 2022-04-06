@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import {useDispatch, useSelector} from "react-redux";
 import {amountDecrease, amountIncrease, removeItem} from "../../action/songAction";
+import {Link} from "react-router-dom";
 
 const Container = styled.div`
   display: flex;
@@ -10,11 +11,11 @@ const Container = styled.div`
   color: white;
 `
 const EmptyInfo = styled.div`
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: bold;
   text-align: center;
   height: 400px;
-  line-height: 400px;
+  line-height: 4rem;
   color: white;
 `
 const ItemContainer = styled.div`
@@ -42,6 +43,7 @@ const ItemInfo = styled.div`
   line-height: 200px;
   color: white;
   font-size: 1.2rem;
+  
   
 `
 
@@ -87,7 +89,10 @@ const Cart = () => {
                         )
 
                         :
-                        <EmptyInfo>Ops. Your cart is empty. Why not go add something?</EmptyInfo>
+                        <EmptyInfo>
+                            Ops. Your cart is empty. Why not go add something?<br/>
+                            <Link to='/shop'> Back to shop</Link>
+                        </EmptyInfo>
                 }
 
             </Container>

@@ -7,18 +7,11 @@ import {useDispatch, useSelector} from "react-redux";
 import { styled } from '@mui/material/styles';
 
 
-// const useStyles = makeStyles({
-//     select: {
-//         '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-//             borderColor: 'white',
-//         },
-//
-//     }
-// })
 const BootstrapInput = styled(Container)(({ theme }) => ({
     'label + &': {
-        marginTop: theme.spacing(3),
+        marginTop: theme.spacing(1),
     },
+
     '& .MuiInputBase-input': {
         borderRadius: 4,
         position: 'relative',
@@ -42,12 +35,12 @@ const BootstrapInput = styled(Container)(({ theme }) => ({
             '"Segoe UI Emoji"',
             '"Segoe UI Symbol"',
         ].join(','),
-        '&:focus': {
-            borderRadius: 4,
-            borderColor: '#80bdff',
-            boxShadow: '0 0 0 0.2rem rgba(0,123,255,.25)',
+        '&:hover':{
+            boxShadow: 'white 0px 0px 40px'
         },
+
     },
+
 }));
 
 
@@ -90,7 +83,7 @@ const Header = ({path, title}) => {
                 </div>
                 <div className='pageHeading'>
                     <div className='nav' >
-                        <Link to='/' type='a'>Home</Link> > {path} > {title}
+                        <Link to='/' type='a'>Home</Link> > <Link to={`/${path}`}>{path}</Link> > {title}
                     </div>
                     <div className='heading' >
                         <h1>{title}</h1>
