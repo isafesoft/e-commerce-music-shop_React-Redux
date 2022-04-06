@@ -1,10 +1,11 @@
 import '../../style/footer.css'
+import {COPY_RIGHT} from "../../helper/constant";
 
 const Footer = () => {
 
     return(
         <div className='footer'>
-            Footer
+            {COPY_RIGHT}
         </div>
     )
 }

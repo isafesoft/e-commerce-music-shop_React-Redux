@@ -1,11 +1,58 @@
 import {Link} from "react-router-dom";
 import '../../style/header.css'
-import {Box, FormControl, InputLabel, MenuItem, Select} from "@mui/material";
+import {Box, Container, FormControl, InputBase, InputLabel, makeStyles, MenuItem, Select} from "@mui/material";
 import {useState} from "react";
 import {sortSongs} from "../../action/songAction";
 import {useDispatch, useSelector} from "react-redux";
+import { styled } from '@mui/material/styles';
+
+
+// const useStyles = makeStyles({
+//     select: {
+//         '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+//             borderColor: 'white',
+//         },
+//
+//     }
+// })
+const BootstrapInput = styled(Container)(({ theme }) => ({
+    'label + &': {
+        marginTop: theme.spacing(3),
+    },
+    '& .MuiInputBase-input': {
+        borderRadius: 4,
+        position: 'relative',
+        backgroundColor: 'black',
+        border: '1px solid #ced4da',
+        fontSize: 16,
+        padding: '10px 26px 10px 12px',
+        width: '100px',
+        textAlign:'center',
+        transition: theme.transitions.create(['border-color', 'box-shadow']),
+        // Use the system font instead of the default Roboto font.
+        fontFamily: [
+            '-apple-system',
+            'BlinkMacSystemFont',
+            '"Segoe UI"',
+            'Roboto',
+            '"Helvetica Neue"',
+            'Arial',
+            'sans-serif',
+            '"Apple Color Emoji"',
+            '"Segoe UI Emoji"',
+            '"Segoe UI Symbol"',
+        ].join(','),
+        '&:focus': {
+            borderRadius: 4,
+            borderColor: '#80bdff',
+            boxShadow: '0 0 0 0.2rem rgba(0,123,255,.25)',
+        },
+    },
+}));
+
 
 const Header = ({path, title}) => {
+    // const classes = useStyles()
     const dispatch = useDispatch()
     const [price, setPrice] = useState('');
     const cart = useSelector(state => state.CartReducer.cart)
@@ -25,7 +72,9 @@ const Header = ({path, title}) => {
         <>
             <div className='headerContainer'>
                 <div className='headerBtnArea'>
-                    <div className='logo'>LOGO</div>
+                    <Link to='/' >
+                    <div className='logo'>. </div>
+                    </Link>
                     <div className='loginAndCart'>
                         <div className='login'>Login</div>
                         <Link to='/cart' type='a'>
@@ -50,13 +99,16 @@ const Header = ({path, title}) => {
                 { title === 'ALL SONGS' ?
                     <div className='sortAndFilter'>
                         <Box sx={{width: 200}}>
-                            <FormControl fullWidth>
-                                <InputLabel id="demo-simple-select-label">Sort</InputLabel>
+                            <FormControl fullWidth
+                                         variant="filled">
+                                <BootstrapInput>
+                                    <InputLabel id="demo-simple-select-filled-label" sx={{color:'white',padding:'10px 30px'}} >Sort</InputLabel>
                                 <Select
-                                    labelId="demo-simple-select-label"
-                                    id="demo-simple-select"
+                                    labelId="demo-simple-select-filled-label"
+                                    id="demo-simple-select-filled-label"
                                     value={price}
                                     label="Price"
+                                    variant="standard"
                                     onChange={handleChange}
                                 >
                                     <MenuItem value={'0'}>Default</MenuItem>
@@ -65,6 +117,7 @@ const Header = ({path, title}) => {
                                     <MenuItem value={'3'}>Name From A-Z</MenuItem>
                                     <MenuItem value={'4'}>Name From Z-A</MenuItem>
                                 </Select>
+                                </BootstrapInput>
                             </FormControl>
                         </Box>
                     </div>

@@ -1,4 +1,4 @@
-import {ADD_TO_CART} from "../helper/constant";
+import {ADD_TO_CART, AMOUNT_DECREASE, AMOUNT_INCREASE, REMOVE_ITEM} from "../helper/constant";
 
 const cartState = {
     cart:[]
@@ -22,6 +22,33 @@ export const CartReducer = (state = cartState, action) => {
                 tempCart.push(payload)
             }
             return {...state, cart: tempCart}
+
+        case AMOUNT_INCREASE:
+            let cartState = [...state.cart]
+            for(let value of cartState){
+                if(value.id === payload){
+                    value.count++
+                }
+            }
+            return {...state, cart: cartState}
+
+        case AMOUNT_DECREASE:
+            let cartDecrease = [...state.cart]
+            for(let value of cartDecrease){
+                if(value.id === payload){
+                    value.count--
+                }
+            }
+            return {...state, cart: cartDecrease}
+
+        case REMOVE_ITEM:
+            console.log('remove reducer')
+            let cartRemove = [...state.cart]
+            let cartAfterRemove = cartRemove.filter((value, index, arr) => {
+                return value.id !== payload
+            })
+            console.log('remove reducer',cartAfterRemove)
+            return {...state, cart: cartAfterRemove}
 
         default:
             return state
