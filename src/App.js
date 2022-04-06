@@ -3,6 +3,7 @@ import Main from "./components/mainPage/Main";
 import MainPageView from "./view/MainPageView";
 import CartView from "./view/CartView";
 import './App.css'
+import WelcomeView from "./view/WelcomeView";
 
 
 function App() {
@@ -10,7 +11,8 @@ function App() {
         <div className='app'>
             <BrowserRouter>
                 <Routes>
-                    <Route path='/' element={<MainPageView/>}/>
+                    <Route path='/' element={<WelcomeView/>}/>
+                    <Route path='/shop' element={<MainPageView/>}/>
                     <Route path='/cart' element={<CartView/>}/>
                 </Routes>
             </BrowserRouter>

@@ -6,6 +6,7 @@
     margin-bottom: 20px;
     border-bottom: 1px lightgrey solid;
     color: white;
+    box-shadow: white 0px 4px 10px;
 }
 
 .headerContainer .headerBtnArea {
@@ -19,6 +20,7 @@
     top: 0;
     z-index: 1000;
     border-bottom: white 1px solid;
+    box-shadow: white 0px 4px 10px;
 
 }
 
@@ -73,7 +75,8 @@
 
 }
 .login:hover{
-    background-color: gray;
+    background-color: white;
+    color: black;
 }
 
 .cart{
@@ -86,7 +89,8 @@
 
 }
 .cart:hover{
-    background-color: gray;
+    background-color: white;
+    color: black;
 }
 
 .cart .cartTag{

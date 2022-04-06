@@ -1,0 +1,46 @@
+
+.logoContainer{
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.bigLogo{
+    width: 100%;
+    height: 100vh;
+    background-image: url("../../img/hb HY LOGO1123.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    opacity: 1;
+    animation: logo linear 8s;
+    z-index: 1;
+
+
+}
+
+.fog{
+    width: 100%;
+    height: 100vh;
+    background-image: url("../../img/fog.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: 0.3;
+    animation: linear 8s fog;
+}
+
+@keyframes fog {
+    0% { opacity: 0}
+    25%{ opacity: 1}
+    100%{opacity: 0.3}
+}
+
+@keyframes logo {
+    0%{ opacity: 0}
+    25%{ opacity: 0}
+    100%{opacity: 1}
+
+}
