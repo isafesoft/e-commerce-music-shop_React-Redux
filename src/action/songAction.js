@@ -1,5 +1,13 @@
 import {api} from "../helper/api";
-import {ADD_TO_CART, AMOUNT_DECREASE, AMOUNT_INCREASE, FETCH_DATA, REMOVE_ITEM, SORT_DATA} from "../helper/constant";
+import {
+    ADD_TO_CART,
+    AMOUNT_DECREASE,
+    AMOUNT_INCREASE,
+    FETCH_DATA,
+    INIT_CART,
+    REMOVE_ITEM,
+    SORT_DATA
+} from "../helper/constant";
 
 export const fetchData = () => async dispatch => {
     try{
@@ -14,6 +22,10 @@ export const fetchData = () => async dispatch => {
 
 export const sortSongs = (value) => dispatch => {
     dispatch({type: SORT_DATA, payload: value})
+}
+
+export const initCart = (storage) => dispatch => {
+    dispatch({type: INIT_CART, payload: storage})
 }
 
 export const addToCart = (song) => dispatch => {

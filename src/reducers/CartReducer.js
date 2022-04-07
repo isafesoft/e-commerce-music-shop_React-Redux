@@ -1,4 +1,4 @@
-import {ADD_TO_CART, AMOUNT_DECREASE, AMOUNT_INCREASE, REMOVE_ITEM} from "../helper/constant";
+import {ADD_TO_CART, AMOUNT_DECREASE, AMOUNT_INCREASE, INIT_CART, REMOVE_ITEM} from "../helper/constant";
 
 const cartState = {
     cart:[]
@@ -49,6 +49,9 @@ export const CartReducer = (state = cartState, action) => {
             })
             console.log('remove reducer',cartAfterRemove)
             return {...state, cart: cartAfterRemove}
+
+        case INIT_CART:
+            return {...state, cart: payload}
 
         default:
             return state

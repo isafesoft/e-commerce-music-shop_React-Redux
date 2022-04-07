@@ -1,6 +1,6 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
-import {addToCart, fetchData} from "../../action/songAction";
+import {addToCart, fetchData, initCart} from "../../action/songAction";
 import {Button, Card, CardActionArea, CardContent, CardMedia, Grid, Typography} from "@mui/material";
 import {Link} from "react-router-dom";
 
@@ -8,9 +8,17 @@ import {Link} from "react-router-dom";
 const Main = () => {
     const dispatch = useDispatch()
     const songs = useSelector(state => state.SongReducer.sortSongs)
+
+    const cartLocalStorage = JSON.parse(localStorage.getItem('cart'))
     useEffect(() => {
         fetchData()(dispatch)
+        if(cartLocalStorage.length !== 0){
+        // let storage = JSON.parse(localStorage.getItem('cart'))
+        initCart(cartLocalStorage)(dispatch)
+        }
     }, [])
+
+
 
 
     return (

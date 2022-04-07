@@ -6,9 +6,30 @@ import './App.css'
 import WelcomeView from "./view/WelcomeView";
 import Player from "./components/playerPage/Player";
 import SongPlayerView from "./view/SongPlayerView";
+import {useDispatch, useSelector} from "react-redux";
+import {useEffect} from "react";
+import {fetchData, initCart} from "./action/songAction";
 
 
 function App() {
+    const dispatch = useDispatch()
+    const cart = useSelector(state => state.CartReducer.cart)
+    const cartLocalStorage = JSON.parse(localStorage.getItem('cart'))
+    useEffect(() => {
+        fetchData()(dispatch)
+        if(cartLocalStorage.length !== 0){
+            initCart(cartLocalStorage)(dispatch)
+        }
+    }, [])
+
+    useEffect(() => {
+        if(cart.length !== 0) {
+            localStorage.setItem('cart', JSON.stringify(cart))
+        }
+    },[cart])
+
+
+
     return (
         <div className='app'>
             <BrowserRouter>
