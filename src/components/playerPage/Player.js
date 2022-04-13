@@ -1,18 +1,12 @@
-import {useContext, useEffect, useState} from "react";
 
 import '../../style/player.css'
-import {useSelector} from "react-redux";
+
 
 
 const Player = ({data} )=> {
 
 
-    // const [songId, setSongId] = useState(0)
 
-
-    // useEffect(()=>{
-    //     setSongId(id - 1)
-    // },[id])
 
 
     return(

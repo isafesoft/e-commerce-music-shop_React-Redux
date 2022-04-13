@@ -12,11 +12,12 @@ const Main = () => {
     const cartLocalStorage = JSON.parse(localStorage.getItem('cart'))
     useEffect(() => {
         fetchData()(dispatch)
+        if(!!cartLocalStorage){
         if(cartLocalStorage.length !== 0){
         // let storage = JSON.parse(localStorage.getItem('cart'))
         initCart(cartLocalStorage)(dispatch)
-        }
-    }, [])
+        }}
+    }, [dispatch])
 
 
 

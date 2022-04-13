@@ -18,6 +18,7 @@ export const CartReducer = (state = cartState, action) => {
                     break
                 }
             }
+
             if (temp) {
                 tempCart.push(payload)
             }
